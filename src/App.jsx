@@ -4,7 +4,7 @@ import LoginSystem from './LoginSystem';
 const App = () => {
     return (
         <div>
-            <LoginSystem />
+            <Dashboard />
         </div>
     )
 }
