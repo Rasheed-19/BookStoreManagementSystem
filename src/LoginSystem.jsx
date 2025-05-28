@@ -24,9 +24,9 @@ const LoginSystem = () => {
     setUsers([
       {
         id: 1,
-        name: 'Abdul Rasheed',
-        email: 'kohistani@ghaznix.com',
-        password: 'kohistani123' // In real app, this would be hashed
+        name: 'abc',
+        email: 'abc@xyz.com',
+        password: '123456' // In real app, this would be hashed
       }
     ]);
   }, []);

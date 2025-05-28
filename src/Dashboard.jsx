@@ -1,7 +1,7 @@
 import React from 'react';
-import { LogOut, LayoutDashboard, Book, Package, ShoppingCart, Users } from 'lucide-react';
+import { LogOut, LayoutDashboard, Book, Package, ShoppingCart, Users, Home } from 'lucide-react';
 
-const Dashboard = ({ user, onBack }) => {
+const Dashboard = ({ user, onBack, onHomepage }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-6xl mx-auto">
@@ -14,16 +14,25 @@ const Dashboard = ({ user, onBack }) => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-                <p className="text-gray-600">Welcome back, {user.name}!</p>
+                <p className="text-gray-600">Welcome back, {user?.name || 'Admin'}!</p>
               </div>
             </div>
-            <button
-              onClick={onBack}
-              className="flex items-center space-x-2 bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Back to Profile</span>
-            </button>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={onHomepage}
+                className="flex items-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
+              >
+                <Home className="w-4 h-4" />
+                <span>Homepage</span>
+              </button>
+              <button
+                onClick={onBack}
+                className="flex items-center space-x-2 bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Back to Profile</span>
+              </button>
+            </div>
           </div>
         </div>
 
