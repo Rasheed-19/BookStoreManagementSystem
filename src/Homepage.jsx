@@ -1,5 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, Star, Heart, ShoppingCart, BookOpen, TrendingUp, Award, Users } from 'lucide-react';
+import { Search, Filter, Star, Heart, ShoppingCart, BookOpen, TrendingUp, Award, Users, ArrowLeft } from 'lucide-react';
+
+const App = () => {
+  const [showDashboard, setShowDashboard] = useState(false);
+
+  // Simple Dashboard component for demonstration
+  const Dashboard = () => (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 flex items-center justify-center">
+      <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+        <div className="text-center">
+          <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <BookOpen className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+          <p className="text-gray-600 mb-6">Welcome to your main dashboard</p>
+          <button
+            onClick={() => setShowDashboard(false)}
+            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            Go to BookStore
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
 const Homepage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -118,6 +142,13 @@ const Homepage = () => {
     );
   };
 
+  const handleGoBack = () => {
+    // Replace this with your actual navigation logic
+    // For example: navigate('/dashboard') or window.history.back()
+    console.log('Navigate to main dashboard');
+    alert('Navigate to main dashboard - replace this with your routing logic');
+  };
+
   const BookCard = ({ book }) => (
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
       <div className="relative">
@@ -193,17 +224,34 @@ const Homepage = () => {
     </div>
   );
 
+  // If dashboard should be shown, render Dashboard component
+  if (showDashboard) {
+    return <Dashboard />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
       <header className="bg-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 sm:space-x-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <BookOpen className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              {/* Go Back Button */}
+              <button
+                onClick={handleGoBack}
+                className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors touch-manipulation"
+              >
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline text-sm font-medium">Back to Dashboard</span>
+                <span className="sm:hidden text-sm font-medium">Back</span>
+              </button>
+              
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <BookOpen className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <h1 className="text-lg sm:text-2xl font-bold text-gray-900">BookStore</h1>
               </div>
-              <h1 className="text-lg sm:text-2xl font-bold text-gray-900">BookStore</h1>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-4">
@@ -346,4 +394,12 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+  // If dashboard should be shown, render Dashboard component
+  if (showDashboard) {
+    return <Dashboard />;
+  }
+
+  return <Homepage />;
+};
+
+export default App;
