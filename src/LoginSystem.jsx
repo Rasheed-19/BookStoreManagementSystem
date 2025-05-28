@@ -70,10 +70,10 @@ const LoginSystem = () => {
     if (!validateForm(true)) return;
 
     setLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
-      const user = users.find(u => 
+      const user = users.find(u =>
         u.email === formData.email && u.password === formData.password
       );
 
@@ -180,11 +180,11 @@ const LoginSystem = () => {
       // 1. Generate a secure reset token
       // 2. Send an email with reset link
       // 3. Store the token with expiration time
-      
+
       // For demo purposes, we'll just update the user's password to a temporary one
-      const updatedUsers = users.map(u => 
-        u.email === resetEmail 
-          ? { ...u, password: 'temppass123' } 
+      const updatedUsers = users.map(u =>
+        u.email === resetEmail
+          ? { ...u, password: 'temppass123' }
           : u
       );
       setUsers(updatedUsers);
@@ -260,9 +260,8 @@ const LoginSystem = () => {
                       type="email"
                       value={resetEmail}
                       onChange={handleResetEmailChange}
-                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${
-                        errors.resetEmail ? 'border-red-300' : 'border-gray-300'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${errors.resetEmail ? 'border-red-300' : 'border-gray-300'
+                        }`}
                       placeholder="Enter your email address"
                     />
                   </div>
@@ -303,53 +302,7 @@ const LoginSystem = () => {
   // If user is logged in, show profile page
   if (currentUser) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
-          <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-              <Shield className="w-8 h-8 text-green-600" />
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900">Welcome Back!</h1>
-            <p className="text-gray-600 mt-2">You are successfully logged in</p>
-          </div>
-
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <div className="flex items-center space-x-3">
-              <User className="w-5 h-5 text-gray-500" />
-              <div>
-                <p className="font-medium text-gray-900">{currentUser.name}</p>
-                <p className="text-sm text-gray-500">{currentUser.email}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="font-medium text-blue-900 mb-2">App Features</h3>
-              <ul className="text-sm text-blue-700 space-y-1">
-                <li 
-                  onClick={handleDashboardClick} 
-                  className='cursor-pointer hover:text-blue-900 transition-colors duration-200'
-                >
-                  • Dashboard
-                </li>
-                <li className='cursor-pointer hover:text-blue-900 transition-colors duration-200'>• Manage Books</li>
-                <li className='cursor-pointer hover:text-blue-900 transition-colors duration-200'>• Manage Stock Inventory</li>
-                <li className='cursor-pointer hover:text-blue-900 transition-colors duration-200'>• Manage Shopping Cart</li>
-                <li className='cursor-pointer hover:text-blue-900 transition-colors duration-200'>• Deal with Customers</li>
-              </ul>
-            </div>
-
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center justify-center space-x-2 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition duration-200"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <Dashboard />
     );
   }
 
@@ -365,8 +318,8 @@ const LoginSystem = () => {
             {currentView === 'login' ? 'Welcome Back' : 'Create Account'}
           </h1>
           <p className="text-gray-600 mt-2">
-            {currentView === 'login' 
-              ? 'Please sign in to your account' 
+            {currentView === 'login'
+              ? 'Please sign in to your account'
               : 'Sign up to get started'
             }
           </p>
@@ -377,7 +330,7 @@ const LoginSystem = () => {
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-6">
             <p className="text-sm text-amber-800">
               <strong>Abdul Rasheed:</strong>
-              <br /> Use Email : kohistani@ghaznix.com,<br /> Use Password : kohistani123: 
+              <br /> Use Email : kohistani@ghaznix.com,<br /> Use Password : kohistani123:
             </p>
           </div>
         )}
@@ -404,9 +357,8 @@ const LoginSystem = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${
-                    errors.name ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${errors.name ? 'border-red-300' : 'border-gray-300'
+                    }`}
                   placeholder="Enter your full name"
                 />
               </div>
@@ -426,9 +378,8 @@ const LoginSystem = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${
-                  errors.email ? 'border-red-300' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${errors.email ? 'border-red-300' : 'border-gray-300'
+                  }`}
                 placeholder="Enter your email"
               />
             </div>
@@ -447,9 +398,8 @@ const LoginSystem = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className={`w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${
-                  errors.password ? 'border-red-300' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${errors.password ? 'border-red-300' : 'border-gray-300'
+                  }`}
                 placeholder="Enter your password"
               />
               <button
@@ -476,9 +426,8 @@ const LoginSystem = () => {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${
-                    errors.confirmPassword ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ${errors.confirmPassword ? 'border-red-300' : 'border-gray-300'
+                    }`}
                   placeholder="Confirm your password"
                 />
               </div>
@@ -519,8 +468,8 @@ const LoginSystem = () => {
         {/* Switch between login/register */}
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            {currentView === 'login' 
-              ? "Don't have an account? " 
+            {currentView === 'login'
+              ? "Don't have an account? "
               : "Already have an account? "
             }
             <button
