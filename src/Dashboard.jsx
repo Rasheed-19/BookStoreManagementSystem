@@ -1,5 +1,6 @@
 import React from 'react';
 import { LogOut, LayoutDashboard, Book, Package, ShoppingCart, Users, Home } from 'lucide-react';
+import Homepage from './Homepage';
 
 const Dashboard = ({ user, onBack, onHomepage }) => {
   return (
